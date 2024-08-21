@@ -1,0 +1,335 @@
+
+Here are the C++ programs for the tasks you requested:
+
+1. Display number of days in a given month
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int main() {
+    int month;
+    cout << "Enter month number (1-12): ";
+    cin >> month;
+
+    switch (month) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            cout << "31 days" << endl;
+            break;
+        case 4: case 6: case 9: case 11:
+            cout << "30 days" << endl;
+            break;
+        case 2:
+            cout << "28/29 days" << endl;
+            break;
+        default:
+            cout << "Invalid month number!" << endl;
+            break;
+    }
+
+    return 0;
+}
+2. Menu-driven program for basic arithmetic operations
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int main() {
+    int choice;
+    double num1, num2;
+
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Addition\n";
+        cout << "2. Subtraction\n";
+        cout << "3. Multiplication\n";
+        cout << "4. Division\n";
+        cout << "5. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (choice >= 1 && choice <= 4) {
+            cout << "Enter two numbers: ";
+            cin >> num1 >> num2;
+        }
+
+        switch (choice) {
+            case 1:
+                cout << "Result: " << num1 + num2 << endl;
+                break;
+            case 2:
+                cout << "Result: " << num1 - num2 << endl;
+                break;
+            case 3:
+                cout << "Result: " << num1 * num2 << endl;
+                break;
+            case 4:
+                if (num2 != 0)
+                    cout << "Result: " << num1 / num2 << endl;
+                else
+                    cout << "Division by zero is not allowed." << endl;
+                break;
+            case 5:
+                cout << "Exiting..." << endl;
+                break;
+            default:
+                cout << "Invalid choice!" << endl;
+                break;
+        }
+    } while (choice != 5);
+
+    return 0;
+}
+3. Display a unique greeting message for the day of the week
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int main() {
+    int day;
+    cout << "Enter day number (1-7): ";
+    cin >> day;
+
+    switch (day) {
+        case 1:
+            cout << "Happy Sunday!" << endl;
+            break;
+        case 2:
+            cout << "Motivated Monday!" << endl;
+            break;
+        case 3:
+            cout << "Terrific Tuesday!" << endl;
+            break;
+        case 4:
+            cout << "Wonderful Wednesday!" << endl;
+            break;
+        case 5:
+            cout << "Thriving Thursday!" << endl;
+            break;
+        case 6:
+            cout << "Fantastic Friday!" << endl;
+            break;
+        case 7:
+            cout << "Super Saturday!" << endl;
+            break;
+        default:
+            cout << "Invalid day number!" << endl;
+            break;
+    }
+
+    return 0;
+}
+4. Menu-driven program for triangle properties
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+bool isIsosceles(int a, int b, int c) {
+    return (a == b || b == c || c == a);
+}
+
+bool isRightAngled(int a, int b, int c) {
+    return (a * a + b * b == c * c || b * b + c * c == a * a || c * c + a * a == b * b);
+}
+
+bool isEquilateral(int a, int b, int c) {
+    return (a == b && b == c);
+}
+
+int main() {
+    int choice, a, b, c;
+
+    do {
+        cout << "\nMenu:\n";
+        cout << "1. Check for Isosceles Triangle\n";
+        cout << "2. Check for Right Angled Triangle\n";
+        cout << "3. Check for Equilateral Triangle\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (choice >= 1 && choice <= 3) {
+            cout << "Enter three sides of the triangle: ";
+            cin >> a >> b >> c;
+        }
+
+        switch (choice) {
+            case 1:
+                if (isIsosceles(a, b, c))
+                    cout << "The triangle is isosceles." << endl;
+                else
+                    cout << "The triangle is not isosceles." << endl;
+                break;
+            case 2:
+                if (isRightAngled(a, b, c))
+                    cout << "The triangle is right-angled." << endl;
+                else
+                    cout << "The triangle is not right-angled." << endl;
+                break;
+            case 3:
+                if (isEquilateral(a, b, c))
+                    cout << "The triangle is equilateral." << endl;
+                else
+                    cout << "The triangle is not equilateral." << endl;
+                break;
+            case 4:
+                cout << "Exiting..." << endl;
+                break;
+            default:
+                cout << "Invalid choice!" << endl;
+                break;
+        }
+    } while (choice != 4);
+
+    return 0;
+}
+5. Convert if-else-if to switch-case
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int main() {
+    int var;
+    cout << "Enter a value for var: ";
+    cin >> var;
+
+    switch (var) {
+        case 1:
+            cout << "good" << endl;
+            break;
+        case 2:
+            cout << "better" << endl;
+            break;
+        case 3:
+            cout << "best" << endl;
+            break;
+        default:
+            cout << "invalid" << endl;
+            break;
+    }
+
+    return 0;
+}
+6. Check whether a year is a leap year using switch statement
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int main() {
+    int year;
+    cout << "Enter a year: ";
+    cin >> year;
+
+    switch (year % 4 == 0) {
+        case 1:
+            switch (year % 100 == 0) {
+                case 1:
+                    switch (year % 400 == 0) {
+                        case 1:
+                            cout << year << " is a leap year." << endl;
+                            break;
+                        case 0:
+                            cout << year << " is not a leap year." << endl;
+                            break;
+                    }
+                    break;
+                case 0:
+                    cout << year << " is a leap year." << endl;
+                    break;
+            }
+            break;
+        case 0:
+            cout << year << " is not a leap year." << endl;
+            break;
+    }
+
+    return 0;
+}
+7. Calculate electricity bill using switch statement
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int main() {
+    int units;
+    double bill;
+
+    cout << "Enter the number of units: ";
+    cin >> units;
+
+    switch (units > 250) {
+        case 1:
+            bill = (units - 250) * 1.50 + 100 * 1.20 + 100 * 0.75 + 50 * 0.50;
+            break;
+        case 0:
+            switch (units > 150) {
+                case 1:
+                    bill = (units - 150) * 1.20 + 100 * 0.75 + 50 * 0.50;
+                    break;
+                case 0:
+                    switch (units > 50) {
+                        case 1:
+                            bill = (units - 50) * 0.75 + 50 * 0.50;
+                            break;
+                        case 0:
+                            bill = units * 0.50;
+                            break;
+                    }
+                    break;
+            }
+            break;
+    }
+
+    bill += bill * 0.20;  // Adding 20% surcharge
+    cout << "Total electricity bill: Rs " << bill << endl;
+
+    return 0;
+}
+8. Convert a positive number into negative and vice versa using switch statement
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number;
+    cout << "Enter a number: ";
+    cin >> number;
+
+    switch (number > 0) {
+        case 1:
+            cout << "Converted number: " << -number << endl;
+            break;
+        case 0:
+            cout << "Converted number: " << -number << endl;
+            break;
+    }
+
+    return 0;
+}
+9. Convert an even number into its upper nearest odd number using switch statement
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number;
+    cout << "Enter an even number: ";
+    cin >> number;
+
+    switch (number % 2 == 0) {
+        case 1:
+            cout << "Upper nearest odd number: " << number + 1 << endl;
+            break;
+        default:
+            cout << number << " is not an even number." << endl;
+            break;
+    }
+
