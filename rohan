@@ -1,0 +1,296 @@
+1. Find the Nth term of the Fibonacci series
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int fibonacci(int n) {
+    if (n <= 1)
+        return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+    cout << "Enter the term number: ";
+    cin >> n;
+    cout << "The " << n << "th term in the Fibonacci series is " << fibonacci(n) << endl;
+    return 0;
+}
+2. Print first N terms of the Fibonacci series
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+void printFibonacci(int n) {
+    int t1 = 0, t2 = 1, nextTerm = 0;
+
+    for (int i = 1; i <= n; ++i) {
+        if(i == 1) {
+            cout << t1 << " ";
+            continue;
+        }
+        if(i == 2) {
+            cout << t2 << " ";
+            continue;
+        }
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+        cout << nextTerm << " ";
+    }
+}
+
+int main() {
+    int n;
+    cout << "Enter the number of terms: ";
+    cin >> n;
+    cout << "Fibonacci Series: ";
+    printFibonacci(n);
+    return 0;
+}
+3. Check whether a given number is in the Fibonacci series or not
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+bool isPerfectSquare(int x) {
+    int s = sqrt(x);
+    return (s * s == x);
+}
+
+bool isFibonacci(int n) {
+    return isPerfectSquare(5 * n * n + 4) || isPerfectSquare(5 * n * n - 4);
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    if (isFibonacci(n))
+        cout << n << " is a Fibonacci number." << endl;
+    else
+        cout << n << " is not a Fibonacci number." << endl;
+
+    return 0;
+}
+4. Calculate HCF of two numbers
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int hcf(int a, int b) {
+    if (b == 0)
+        return a;
+    return hcf(b, a % b);
+}
+
+int main() {
+    int a, b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+    cout << "HCF of " << a << " and " << b << " is " << hcf(a, b) << endl;
+    return 0;
+}
+5. Check whether two given numbers are co-prime or not
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int hcf(int a, int b) {
+    if (b == 0)
+        return a;
+    return hcf(b, a % b);
+}
+
+bool areCoprime(int a, int b) {
+    return hcf(a, b) == 1;
+}
+
+int main() {
+    int a, b;
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+
+    if (areCoprime(a, b))
+        cout << a << " and " << b << " are co-prime numbers." << endl;
+    else
+        cout << a << " and " << b << " are not co-prime numbers." << endl;
+
+    return 0;
+}
+6. Print all Prime numbers under 100
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+bool isPrime(int n) {
+    if (n <= 1)
+        return false;
+    for (int i = 2; i <= sqrt(n); i++) {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int main() {
+    cout << "Prime numbers under 100 are: ";
+    for (int i = 2; i < 100; i++) {
+        if (isPrime(i))
+            cout << i << " ";
+    }
+    return 0;
+}
+7. Print all Prime numbers between two given numbers
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+bool isPrime(int n) {
+    if (n <= 1)
+        return false;
+    for (int i = 2; i <= sqrt(n); i++) {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int main() {
+    int low, high;
+    cout << "Enter two numbers: ";
+    cin >> low >> high;
+
+    cout << "Prime numbers between " << low << " and " << high << " are: ";
+    for (int i = low; i <= high; i++) {
+        if (isPrime(i))
+            cout << i << " ";
+    }
+    return 0;
+}
+8. Find the next Prime number of a given number
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+bool isPrime(int n) {
+    if (n <= 1)
+        return false;
+    for (int i = 2; i <= sqrt(n); i++) {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int nextPrime(int n) {
+    int next = n + 1;
+    while (!isPrime(next)) {
+        next++;
+    }
+    return next;
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    cout << "The next prime number after " << n << " is " << nextPrime(n) << endl;
+    return 0;
+}
+9. Check whether a given number is an Armstrong number or not
+cpp
+Copy code
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isArmstrong(int n) {
+    int sum = 0, temp = n;
+    int digits = log10(n) + 1;
+
+    while (temp != 0) {
+        int digit = temp % 10;
+        sum += pow(digit, digits);
+        temp /= 10;
+    }
+
+    return (sum == n);
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+
+    if (isArmstrong(n))
+        cout << n << " is an Armstrong number." << endl;
+    else
+        cout << n << " is not an Armstrong number." << endl;
+
+    return 0;
+}
+10. Print all Armstrong numbers under 1000
+cpp
+Copy code
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool isArmstrong(int n) {
+    int sum = 0, temp = n;
+    int digits = log10(n) + 1;
+
+    while (temp != 0) {
+        int digit = temp % 10;
+        sum += pow(digit, digits);
+        temp /= 10;
+    }
+
+    return (sum == n);
+}
+
+int main() {
+    cout << "Armstrong numbers under 1000 are: ";
+    for (int i = 1; i < 1000; i++) {
+        if (isArmstrong(i))
+            cout << i << " ";
+    }
+    return 0;
+}
+11. Find the position of first 1 in LSB
+cpp
+Copy code
+#include <iostream>
+using namespace std;
+
+int findPositionOfFirst1(int n) {
+    return log2(n & -n) + 1;
+}
+
+int main() {
+    int n;
+    cout << "Enter a number: ";
+    cin >> n;
+    cout << "Position of first 1 in LSB is: " << findPositionOfFirst1(n) << endl;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
